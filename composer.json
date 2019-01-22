@@ -1,0 +1,28 @@
+{
+	"authors" : [{
+			"name" : "Wojciech Zielinski",
+			"email" : "voyteck0@gmail.com",
+			"homepage" : "https://github.com/Voyteck"
+		}
+	],
+	"name" : "voyteck/extmvc",
+	"description" : "Extensions for Zend Framework controllers",
+	"type" : "zend-module",
+	"homepage" : "https://github.com/Voyteck/VMvcControllers",
+	"license" : "MIT",
+	"require" : {
+		"php" : "^5.5.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0",
+		"voyteck/extlibs" : "~1.0",
+		"zendframework/zend-mvc" : "~3.1",
+		"zendframework/zend-servicemanager" : "~3.4",
+		"zendframework/zend-servicemanager-di" : "~1.2"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Voyteck\\" : "src/"
+		}
+	},
+	"config" : {
+		"vendor-dir" : "vendor/"
+	}
+}
