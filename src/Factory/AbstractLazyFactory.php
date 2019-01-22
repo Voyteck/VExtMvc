@@ -2,7 +2,7 @@
 namespace Voyteck\VExtMvc\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Application\Interfaces\EventManagerLogCapableInterface;
+//use Application\Interfaces\EventManagerLogCapableInterface;
 /**
  * Abstract lazy factory delivering number of features 
  *
@@ -107,10 +107,10 @@ abstract class AbstractLazyFactory {
         $this->addObjectProperties($objectInstance, $serviceLocator);
 
         // Attaching logs if interface is present
-        if ($objectInstance instanceof EventManagerLogCapableInterface) {
+//         if ($objectInstance instanceof EventManagerLogCapableInterface) {
 //             $serviceLocator->get('Log')->debug('Attaching log event listener to ' . $requestedName . ' at AbstractLazyFactory');
-            $objectInstance->attachLogEventListener($serviceLocator->get('SharedEventManager'), $serviceLocator->get('Log'), $serviceLocator->get('Config')['debug_options']['EventManagerLog']);
-        }
+//             $objectInstance->attachLogEventListener($serviceLocator->get('SharedEventManager'), $serviceLocator->get('Log'), $serviceLocator->get('Config')['debug_options']['EventManagerLog']);
+//         }
         
 
 
