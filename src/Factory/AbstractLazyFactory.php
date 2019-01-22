@@ -4,6 +4,7 @@ namespace Voyteck\VExtMvc\Factory;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Application\Interfaces\EventManagerLogCapableInterface;
 /**
+ * Abstract lazy factory delivering number of features 
  *
  * @author wojte
  *

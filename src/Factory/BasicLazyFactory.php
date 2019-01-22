@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Basic lazy factory
+ */
+
 namespace Voyteck\VExtMvc\Factory;
 
 use Zend\ServiceManager\Factory\AbstractFactoryInterface;
