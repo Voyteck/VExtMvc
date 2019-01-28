@@ -2,7 +2,7 @@
 namespace Voyteck\VExtMvc\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-//use Application\Interfaces\EventManagerLogCapableInterface;
+
 /**
  * Abstract lazy factory delivering number of features 
  *
@@ -18,11 +18,8 @@ abstract class AbstractLazyFactory {
      */
     protected function getPropertiesConfig() {
         return array(
-            'LAZYFACTORY_INCLUDE_LOG'                   => function($serviceLocator) { return $serviceLocator->get('Log'); }, // strange, but using std 'Log' does not work correctly
             'LAZYFACTORY_INCLUDE_CONFIG'                => 'Config',
             'LAZYFACTORY_INCLUDE_SERVICELOCATOR'        => function($serviceLocator) { return $serviceLocator; },
-            'LAZYFACTORY_INCLUDE_SHAREDEVENTMANAGER'    => 'SharedEventManager',
-            'LAZYFACTORY_INCLUDE_TRANSLATOR'            => 'translator'
         );
     }
 
@@ -98,7 +95,6 @@ abstract class AbstractLazyFactory {
      * @return object                                   Created object
      */
     protected function createObject($requestedName, ServiceLocatorInterface $serviceLocator, array $constructParams = array()) {
-//     	$serviceLocator->get('Log')->debug('Creating instance of ' . $requestedName);
         
         $reflectedClass = new \ReflectionClass($requestedName);
         $objectInstance = $reflectedClass->newInstanceWithoutConstructor();
@@ -106,12 +102,6 @@ abstract class AbstractLazyFactory {
         // Adding properties defined by constants
         $this->addObjectProperties($objectInstance, $serviceLocator);
 
-        // Attaching logs if interface is present
-//         if ($objectInstance instanceof EventManagerLogCapableInterface) {
-//             $serviceLocator->get('Log')->debug('Attaching log event listener to ' . $requestedName . ' at AbstractLazyFactory');
-//             $objectInstance->attachLogEventListener($serviceLocator->get('SharedEventManager'), $serviceLocator->get('Log'), $serviceLocator->get('Config')['debug_options']['EventManagerLog']);
-//         }
-        
 
 
         // Running constructor
