@@ -41,7 +41,7 @@ abstract class AbstractLazyFactory {
     protected function addObjectProperties($object, ServiceLocatorInterface $serviceLocator) {
         foreach($this->getPropertiesConfig() as $constant => $property) {
             if (defined(get_class($object) . '::' . $constant))
-                if (!is_null(constant(get_class($object) . '::' . $constant))) {
+                if (constant(get_class($object) . '::' . $constant) !== null) {
                     $propertyName = constant(get_class($object) . '::' . $constant);
                     if (is_string($property)) // setting the property for string values (retrieves from serviceLocator)
                         $object->$propertyName = $serviceLocator->get($property);
@@ -77,7 +77,7 @@ abstract class AbstractLazyFactory {
             }
         }
 
-        if (is_null($parameter_instances))
+        if ($parameter_instances === null)
             return array();
         else
             return $parameter_instances;
