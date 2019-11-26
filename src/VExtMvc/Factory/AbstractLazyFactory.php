@@ -4,7 +4,7 @@ namespace Voyteck\VExtMvc\Factory;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Abstract lazy factory delivering number of features 
+ * Abstract lazy factory delivering number of features
  *
  * @author wojte
  *
@@ -70,7 +70,7 @@ abstract class AbstractLazyFactory {
                             $parameter_instances[] = $serviceLocator->get($cn);
                         }
                         catch (\Exception $x) {
-                            $serviceLocator->get('Log')->err(get_class($this) . " couldn't create an instance of $cn to satisfy the constructor for $requestedName.");
+                            $serviceLocator->get('Log')->err(get_class($this) . " couldn't create an instance of $cn to satisfy the constructor for $requestedName - " . $x->getMessage());
                             exit;
                         }
                     }
@@ -95,7 +95,7 @@ abstract class AbstractLazyFactory {
      * @return object                                   Created object
      */
     protected function createObject($requestedName, ServiceLocatorInterface $serviceLocator, array $constructParams = array()) {
-        
+
         $reflectedClass = new \ReflectionClass($requestedName);
         $objectInstance = $reflectedClass->newInstanceWithoutConstructor();
 
